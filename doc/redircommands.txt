@@ -1,0 +1,76 @@
+*redircommands.txt*                    Plugin for redirecting output of commands
+
+
+                      RedirCommands   (by Scott Updike)~
+
+
+==============================================================================
+CONTENTS                                                *RedirCommandsContents*
+
+    1.Summary.................................|RedirCommands|
+    2.Installation............................|RedirCommandsInstallation|
+    3.Functionality...........................|RedirCommandsFunctionality|
+    4.Options.................................|RedirCommandsOptions|
+    5.Changelog...............................|RedirCommandsChangelog|
+    6.License.................................|RedirCommandsLicense|
+
+==============================================================================
+1. Summary                                                     *RedirCommands*
+
+The Vim command redir is very powerful. It allows you to process the output
+of commands in whatever way you desire, but it is cumbersome to use. The
+*RedirCommands* pulgin gives you all of the power without the trouble.
+
+==============================================================================
+2. Installation                                    *RedirCommandsInstallation*
+
+Extract the plugin files in your ~/.vim (*nix) or ~/vimfiles (Windows). You
+should have 2 files: >
+    plugin/redircommands.vim
+    doc/redircommands.txt
+<
+Next, to finish installing the help file run: >
+    :helptags ~/.vim/doc
+
+Alternatively, and arguably preferably, use Pathogen and checkout the
+vim-redircommands directory in your bundle directory. Then, run: >
+    :Helptags
+
+==============================================================================
+3. Functionality                                  *RedirCommandsFunctionality*
+
+:R <command>
+Run command and redirect output to a split window. >
+
+    :R function NERDComment
+    :R python print '\n'.join([str(x**2) for x in xrange(100)])
+
+:RR <command> <destination>
+Run command and redirect output to a destination. Destination can be a
+register, global variable, or file. The destination string must not contain
+spaces. >
+
+    :RR highlight Comment @a
+    :RR highlight Comment =>g:hi_comment
+    :RR highlight Comment >hi_comment.txt
+
+==============================================================================
+4. Options                                              *RedirCommandsOptions*
+
+*g:redircommands_newbuffer_command*
+The command used to redirect output to a split window. The default is 'R'.
+
+*g:redircommands_general_command*
+The command used to redirect output to a specified destination. The default is 'RR'.
+
+==============================================================================
+5. Changelog                                          *RedirCommandsChangelog*
+
+1.0.0
+    - initial version
+
+==============================================================================
+6. License                                              *RedirCommandsLicense*
+
+The RedirCommands plugin is released under Vim's |license|.
+

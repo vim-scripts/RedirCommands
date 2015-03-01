@@ -1,0 +1,32 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=5122
+
+The Vim command redir is very powerful. It allows you to process the output of commands in whatever way you desire, but it is cumbersome to use. The RedirCommands pulgin gives you all of the power without the trouble.
+
+Functionality
+
+:R <command>
+
+Run command and redirect output to a split window.
+
+    :R function NERDComment
+    :R python print '\n'.join([str(x**2) for x in xrange(100)])
+
+:RR <command> <destination>
+
+Run command and redirect output to a destination. Destination can be a
+register, global variable, or file. The destination string must not contain
+spaces.
+
+    :RR highlight Comment @a
+    :RR highlight Comment =>g:hi_comment
+    :RR highlight Comment >hi_comment.txt
+
+Options
+
+g:redircommands_newbuffer_command
+
+The command used to redirect output to a split window. The default is 'R'.
+
+g:redircommands_general_command
+
+The command used to redirect output to a specified destination. The default is 'RR'.
